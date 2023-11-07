@@ -1,0 +1,23 @@
+version: '3'
+services:
+  ssl:
+    build:
+      context: .
+      dockerfile: Dockerfile.ssl
+      args:
+        - DOMAIN=${DOMAIN}
+    volumes:
+      - ssl:/ssl
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DOMAIN=${DOMAIN}
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - ssl
+volumes:
+  ssl:
