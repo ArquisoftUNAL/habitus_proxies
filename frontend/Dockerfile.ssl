@@ -1,0 +1,10 @@
+FROM alpine
+ARG DOMAIN
+RUN apk add --no-cache openssl
+WORKDIR /ssl
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /ssl/${DOMAIN}.key \
+    -out /ssl/${DOMAIN}.crt \
+    -subj "/C=CO/ST=Bogota/L=Bogota/O=ArquisoftUNAL/OU=Habitus/CN=${DOMAIN}"
+
+VOLUME /ssl
