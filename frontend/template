@@ -1,5 +1,5 @@
 upstream web_proxy_node {
-    server host.docker.internal:5000;
+    server ${TARGET_HOST};
 }
 
 server {
