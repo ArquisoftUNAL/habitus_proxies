@@ -10,7 +10,7 @@ run-wa-rp:
 
 # Execute on a linux-based machine, pass HOSTNAME as argument
 create-ssl:
-	RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+	openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout ./certs/localhost.key \
     -out ./certs/localhost.crt \
     -subj "/C=CO/ST=Bogota/L=Bogota/O=ArquisoftUNAL/OU=Habitus/CN=${HOSTNAME}"
